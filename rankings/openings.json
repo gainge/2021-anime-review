@@ -201,6 +201,74 @@
             "link": "https://animethemes.moe/video/YakusokuNoNeverlandS2-OP1.webm"
         }
     ],
+    "tiers": [
+        {
+            "label": "God Tier",
+            "low": 1,
+            "high": 4,
+            "color": "#999999"
+        },
+        {
+            "label": "SS",
+            "low": 4,
+            "high": 7,
+            "color": "#D9D9D9"
+        },
+        {
+            "label": "S",
+            "low": 7,
+            "high": 13,
+            "color": "#FF0000"
+        },
+        {
+            "label": "A+",
+            "low": 13,
+            "high": 17,
+            "color": "#FF9900"
+        },
+        {
+            "label": "A",
+            "low": 17,
+            "high": 25,
+            "color": "#FFFF00"
+        },
+        {
+            "label": "A-",
+            "low": 25,
+            "high": 31,
+            "color": "#00FF00"
+        },
+        {
+            "label": "B+",
+            "low": 31,
+            "high": 34,
+            "color": "#00FFFF"
+        },
+        {
+            "label": "B",
+            "low": 34,
+            "high": 41,
+            "color": "#4A86E8"
+        },
+        {
+            "label": "B-",
+            "low": 41,
+            "high": 45,
+            "color": "#674EA7"
+        },
+        {
+            "label": "C",
+            "low": 45,
+            "high": 48,
+            "color": "#FC86C4"
+        },
+        {
+            "label": "D",
+            "low": 48,
+            "high": 51,
+            "color": "#BE2BFF"
+        }
+    ],
     "ranking": [
         14,
         21,
