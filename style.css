@@ -1,0 +1,117 @@
+html {
+    background-color: ghostwhite;
+}
+
+body {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    background-color: ghostwhite;
+
+    padding: 0rem 2rem 2rem 2rem;
+}
+
+
+#modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    background-color: #04040477;
+    height: 100%;
+    width: 100%;
+}
+
+#opening-video {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 80%;
+    height: 95%;
+
+    box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.52);
+    -moz-box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.52);
+}
+
+#opening-heading {
+    text-align: center;
+}
+
+
+#opening-ranking {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.52);
+    -webkit-box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.52);
+    -moz-box-shadow: 10px 10px 28px -4px rgba(0,0,0,0.52);
+
+    border-radius: 0.5em;
+}
+
+
+.tier {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    padding: 1rem 0.5rem;
+}
+
+
+.ranking-item {
+    display: flex;
+    margin: 0.1rem 0rem;
+    font-family: monospace;
+    /* font-weight: bold; */
+    font-size: 1.5em;
+    padding: 0.4rem 0rem;
+}
+
+.ranking-item:not(:last-child) {
+    border-bottom: solid 1px lightgray;
+}
+
+.ranking-item:hover {
+    background-color: #acacac33;
+}
+
+
+.rank-index {
+    margin: 0rem 0rem 0rem 0.5rem;
+}
+
+.op-title {
+    flex: auto;
+}
+
+
+.ranking-item > p {
+    display: inline;
+    margin: 0;
+}
+
+#tier-1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    grid-row-start: 1;
+    grid-row-end: 4;
+
+    background-color: lightblue;
+}
+
+#tier-2 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    grid-row-start: 4;
+    grid-row-end: 7;
+
+    background-color: coral;
+}
