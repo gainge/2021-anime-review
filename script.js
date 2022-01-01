@@ -1,4 +1,5 @@
 const OPENINGS_JSON_FILE = './rankings/openings.json';
+const LINK_ICON = './res/foreign.png';
 
 fetch(OPENINGS_JSON_FILE)
   .then(response => response.json())
@@ -42,6 +43,13 @@ function buildRankings(json) {
 
   // Write out the tiers
   const tiers = json.tiers;
+  const openings = json.openings;
+  const ranking = json.ranking;
+  const awards = json.awards;
+
+
+  let colors = [];
+  let colorIndices = [];
   
   tiers.forEach(tierData => {
     let tier = document.createElement('p');
@@ -56,13 +64,61 @@ function buildRankings(json) {
     tier.style.gridRowEnd = tierData.high;
 
     rankingParent.appendChild(tier);
+
+    // Store the colors to use for rank numbers
+    colors.push(tierData.color);
+    colorIndices.push(tierData.high);
   });
 
+
+
+  // Write out the awards!
+  const awardsParent = document.getElementById('awards');
+
+  awards.forEach(award => {
+    let container = document.createElement('div');
+    container.classList.add('award-item');
+
+    // Spin out the label
+    let label = document.createElement('p');
+    label.innerHTML = award.award;
+    label.classList.add('award-title')
+    
+    let op = document.createElement('a');
+    op.classList.add('award-op')
+    let opening = openings[award.index]
+    op.innerHTML = opening.name;
+    op.onclick = () => playVideo(opening.link);
+    // op.setAttribute('href', );
+
+    container.appendChild(label);
+    container.appendChild(op);
+
+    awardsParent.appendChild(container);
+  });
+
+
+
+
+  colorIndices.push(1000000);
+
+  console.log(colorIndices);
+
+  colors.reverse()
+  colorIndices.reverse();
+
   // Now we have to actually spit out the shows eh?
-  openings = json.openings;
-  const ranking = json.ranking;
+
+  let currentTierColor = colors.pop() || '#FF00FF';
+  let nextColorIndex = colorIndices.pop() || 10000000;
 
   ranking.forEach((ID, rank) => {
+    // Check for color update
+    if (rank + 1 >= nextColorIndex) {
+      currentTierColor = colors.pop() || '#FF00FF';
+      nextColorIndex = colorIndices.pop() || 10000000;
+    }
+
     let opening = openings[ID];
     console.log(opening);
 
@@ -72,8 +128,9 @@ function buildRankings(json) {
 
     // Add the rank
     let rankSpan = document.createElement('p');
-    rankSpan.innerHTML = `${rank + 1} ${rank < 9 ? ' ' : ''}- `;
+    rankSpan.innerHTML = `${rank + 1}`;
     rankSpan.classList.add('rank-index');
+    rankSpan.style.backgroundColor = currentTierColor;
     
     openingItem.appendChild(rankSpan);
 
@@ -84,6 +141,20 @@ function buildRankings(json) {
     openingDetail.classList.add('op-title');
 
     openingItem.appendChild(openingDetail);
+
+
+    // Add the show link icon
+    let showLink = document.createElement('a');
+    showLink.setAttribute('href', opening.showURL || 'https://www.youtube.com/channel/UCO_aKKYxn4tvrqPjcTzZ6EQ');
+    showLink.setAttribute('target', '_blank')
+
+    let linkIcon = document.createElement('img');
+    linkIcon.setAttribute('src', LINK_ICON);
+    linkIcon.classList.add('link-icon');
+
+    showLink.appendChild(linkIcon);
+
+    openingItem.appendChild(showLink);
 
     // Finally add the parent
     rankingParent.appendChild(openingItem);
